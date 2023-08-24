@@ -4,7 +4,7 @@ public class ScoutVO {
 	int scoutNum;
 	String scoutId;
 	String scoutPW;
-	String manual;
+	String manual; // 버려
 	int contractNum;
 	String contractDet;
 

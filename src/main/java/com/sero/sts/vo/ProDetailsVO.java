@@ -2,36 +2,27 @@ package com.sero.sts.vo;
 
 public class ProDetailsVO {
 	int proNum;
-	String proAddress;
-	String proSchool;
-	String proState;
-	int proZip;
-	String proName;
-	String proDetails;
-	String proVid;
+	String proPos;
+	String proName;	
+	int proSign;
 
 	public ProDetailsVO() {
 
 	}
 
-	public ProDetailsVO(int proNum, String proAddress, String proSchool, String proState, int proZip, String proName,
-			String proDetails, String proVid) {
+	public ProDetailsVO(int proNum, String proPos, String proName, int proSign) {
 		super();
 		this.proNum = proNum;
-		this.proAddress = proAddress;
-		this.proSchool = proSchool;
-		this.proState = proState;
-		this.proZip = proZip;
+		this.proPos = proPos;
 		this.proName = proName;
-		this.proDetails = proDetails;
-		this.proVid = proVid;
+		this.proSign = proSign;
 	}
-
+	
+	
 	@Override
 	public String toString() {
-		return "ProDetailsVO [proNum=" + proNum + ", proAddress=" + proAddress + ", proSchool=" + proSchool
-				+ ", proState=" + proState + ", proZip=" + proZip + ", proName=" + proName + ", proDetails="
-				+ proDetails + ", proVid=" + proVid + "]";
+		return "ProDetailsVO [proNum=" + proNum + ", proPos=" + proPos + ", proName=" + proName + ", proSign=" + proSign
+				+ "]";
 	}
 
 	public int getProNum() {
@@ -42,36 +33,12 @@ public class ProDetailsVO {
 		this.proNum = proNum;
 	}
 
-	public String getProAddress() {
-		return proAddress;
+	public String getProPos() {
+		return proPos;
 	}
 
-	public void setProAddress(String proAddress) {
-		this.proAddress = proAddress;
-	}
-
-	public String getProSchool() {
-		return proSchool;
-	}
-
-	public void setProSchool(String proSchool) {
-		this.proSchool = proSchool;
-	}
-
-	public String getProState() {
-		return proState;
-	}
-
-	public void setProState(String proState) {
-		this.proState = proState;
-	}
-
-	public int getProZip() {
-		return proZip;
-	}
-
-	public void setProZip(int proZip) {
-		this.proZip = proZip;
+	public void setProPos(String proPos) {
+		this.proPos = proPos;
 	}
 
 	public String getProName() {
@@ -82,20 +49,15 @@ public class ProDetailsVO {
 		this.proName = proName;
 	}
 
-	public String getProDetails() {
-		return proDetails;
+	public int getProSign() {
+		return proSign;
 	}
 
-	public void setProDetails(String proDetails) {
-		this.proDetails = proDetails;
+	public void setProSign(int proSign) {
+		this.proSign = proSign;
 	}
 
-	public String getProVid() {
-		return proVid;
-	}
 
-	public void setProVid(String proVid) {
-		this.proVid = proVid;
-	}
+
 
 }

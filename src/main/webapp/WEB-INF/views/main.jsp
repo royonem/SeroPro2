@@ -11,12 +11,97 @@
 <head>
 <meta charset="UTF-8">
 	<title>Home</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function() {
+	$("loginJSON").click(function() {
+		var member = {id:"park",
+				      name: "박",
+				      pwd : "1234",
+				      email : "park@n.com" };
+		$.ajax({
+		   type:"post",
+		   url: "${contextPath}/scout/pro",
+		   contentType : "application/json",
+		   data : JSON.stringify(member),
+		   success:function (data,textStatus){
+			   
+		   },
+		   error:function(data,textStatus){
+			   alert("에라 발생");
+		   },
+		   complete:function(data,textStatus){			   
+		   }
+		});
+	});
+});
+
+</script>
+
+<script>
+$(function() {
+	$("proJSON").click(function() {
+		var member = {id:"park",
+				      name: "박",
+				      pwd : "1234",
+				      email : "park@n.com" };
+		$.ajax({
+		   type:"post",
+		   url: "${contextPath}/test/info",
+		   contentType : "application/json",
+		   data : JSON.stringify(member),
+		   success:function (data,textStatus){
+			   
+		   },
+		   error:function(data,textStatus){
+			   alert("에라 발생");
+		   },
+		   complete:function(data,textStatus){			   
+		   }
+		});
+	});
+});
+
+</script>
+
+
+<script>
+$(function() {
+	$("ctJSON").click(function() {
+		var member = {id:"park",
+				      name: "박",
+				      pwd : "1234",
+				      email : "park@n.com" };
+		$.ajax({
+		   type:"post",
+		   url: "${contextPath}/test/info",
+		   contentType : "application/json",
+		   data : JSON.stringify(member),
+		   success:function (data,textStatus){
+			   
+		   },
+		   error:function(data,textStatus){
+			   alert("에라 발생");
+		   },
+		   complete:function(data,textStatus){			   
+		   }
+		});
+	});
+});
+
+</script>
 </head>
 <body>
 <h1>
-	Hello world!  
+	스카우터야 일해라
 </h1>
+<input type="button" id ="loginJSON" value="로그인" /><br><br>
+<div id="output"></div>
 
-<P>  The time on the server is ${serverTime}. </P>
+<input type="button" id ="proJSON" value="선수목록" /><br><br>
+<div id="output"></div>
+
+<input type="button" id ="ctJSON" value="계약서" /><br><br>
+<div id="output"></div>
 </body>
 </html>
