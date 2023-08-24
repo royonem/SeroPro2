@@ -21,4 +21,9 @@ public class ScoutService {
 		
 	}
 
+	public static ProDetailsVO getProInfo(int proNum) {
+		return null;
+		
+	}
+	
 }

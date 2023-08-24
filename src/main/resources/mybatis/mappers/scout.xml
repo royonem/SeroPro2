@@ -4,7 +4,7 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.scout">
- 	<resultMap id="scoutResult" type="ScoutVO">
+	<resultMap id="scoutResult" type="ScoutVO">
 		<result property="scoutNum" column="scoutNum" />
 		<result property="scoutId" column="scoutId" />
 		<result property="scoutPW" column="scoutPW" />
@@ -12,7 +12,7 @@
 		<result property="contractNum" column="contractNum" />
 		<result property="contractDet" column="contractDet" />
 	</resultMap>
-	
+
 	<resultMap id="proResult" type="ProDetailsVO">
 		<result property="proNum" column="proNum" />
 		<result property="proPos" column="proPos" />
@@ -31,8 +31,20 @@
 		<result property="mbti" column="mbti" />
 		<result property="proSign" column="proSign" />
 	</resultMap>
-	
-		<insert id="insertPro" parameterType="ProDetailsVO">
+
+	<select id="selectAllProList" resultMap="proResult">
+      <![CDATA[
+         select * from sero_pro_details	 	
+      ]]>
+	</select>
+
+	<select id="selectPro" resultMap="proResult">
+      <![CDATA[
+         select * from sero_pro_details	where proNum = #{proNum} 	
+      ]]>
+	</select>
+
+	<insert id="insertPro" parameterType="ProDetailsVO">
 		<![CDATA[
 			 insert into sero_pro_details(proNum, proPos, proName, proAddress, proSchool, 
 			 proDetails, proVid, proAge, proHeight, batAvg, war, ops, era, whip, mbti, proSign)
@@ -42,13 +54,13 @@
 			 )
 		]]>
 	</insert>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 </mapper>
