@@ -4,5 +4,51 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.scout">
- 
+ 	<resultMap id="scoutResult" type="ScoutVO">
+		<result property="scoutNum" column="scoutNum" />
+		<result property="scoutId" column="scoutId" />
+		<result property="scoutPW" column="scoutPW" />
+		<result property="manual" column="manual" />
+		<result property="contractNum" column="contractNum" />
+		<result property="contractDet" column="contractDet" />
+	</resultMap>
+	
+	<resultMap id="proResult" type="ProDetailsVO">
+		<result property="proNum" column="proNum" />
+		<result property="proPos" column="proPos" />
+		<result property="proName" column="proName" />
+		<result property="proAddress" column="proAddress" />
+		<result property="proSchool" column="proSchool" />
+		<result property="proDetails" column="proDetails" />
+		<result property="proVid" column="proVid" />
+		<result property="proAge" column="proAge" />
+		<result property="proHeight" column="proHeight" />
+		<result property="batAvg" column="batAvg" />
+		<result property="war" column="war" />
+		<result property="ops" column="ops" />
+		<result property="era" column="era" />
+		<result property="whip" column="whip" />
+		<result property="mbti" column="mbti" />
+		<result property="proSign" column="proSign" />
+	</resultMap>
+	
+		<insert id="insertPro" parameterType="ProDetailsVO">
+		<![CDATA[
+			 insert into sero_pro_details(proNum, proPos, proName, proAddress, proSchool, 
+			 proDetails, proVid, proAge, proHeight, batAvg, war, ops, era, whip, mbti, proSign)
+			 values(entryno_sequence.NEXTVAL, #{proPos}, #{proName}, #{proAddress}, #{proSchool}, 
+			  #{proDetails}, #{proVid}, #{proAge}, #{proHeight},
+			  #{batAvg}, #{war}, #{ops}, #{era}, #{whip}, #{mbti}, #{proSign}
+			 )
+		]]>
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
