@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +17,7 @@ import com.sero.sts.vo.ProDetailsVO;
 @RequestMapping("/scout")
 public class ScoutController {
 
-	@RequestMapping("/proList")
+	@RequestMapping("/proList") // 선수 목록 이동
 	public ModelAndView proList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		List<ProDetailsVO> proList = ScoutService.listPros();
@@ -27,7 +26,7 @@ public class ScoutController {
 		return mav;
 	}
 	
-	@RequestMapping("/proForm")
+	@RequestMapping("/proForm") // 선수 추가 폼 이동
 	public ModelAndView proForm(@ModelAttribute("pro") ProDetailsVO pro, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
@@ -36,7 +35,7 @@ public class ScoutController {
 		return mav;
 	}
 	
-	@RequestMapping("/addPro")
+	@RequestMapping("/addPro") // 선수 추가 행동 확인
 	public ModelAndView addPro(@ModelAttribute("pro") ProDetailsVO pro, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
