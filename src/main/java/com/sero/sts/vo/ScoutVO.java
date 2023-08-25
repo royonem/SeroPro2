@@ -12,8 +12,6 @@ public class ScoutVO {
 		
 	}
 
-	
-	
 	public ScoutVO(int scoutNum, String scoutId, String scoutPW, String manual, int contractNum, String contractDet) {
 		super();
 		this.scoutNum = scoutNum;
@@ -23,8 +21,6 @@ public class ScoutVO {
 		this.contractNum = contractNum;
 		this.contractDet = contractDet;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -82,5 +78,4 @@ public class ScoutVO {
 		this.contractDet = contractDet;
 	}
 
-	
 }
