@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sero.sts.dao.ScoutDAO;
 import com.sero.sts.vo.ProDetailsVO;
 
-@Service("bookService")
+@Service("scoutService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class ScoutService {
 	@Autowired

@@ -51,7 +51,7 @@ public class ScoutController {
 		ProDetailsVO proInfo = ScoutService.getProInfo(proNum);
 		ModelAndView mav = new ModelAndView(viewName);
 			
-	    mav.addObject("proInfo", proInfo);  // Add book details list object
+	    mav.addObject("proInfo", proInfo);  
 
 		return mav;
 
@@ -63,7 +63,7 @@ public class ScoutController {
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		ScoutService.editPro(pro);
-		ModelAndView mav = new ModelAndView("redirect:/book/viewBook.do?num="+pro.getProNum());
+		ModelAndView mav = new ModelAndView("redirect:/pro/viewPro?num="+pro.getProNum());
 		return mav;
 	}
 	
