@@ -4,25 +4,38 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sero.sts.dao.ScoutDAO;
 import com.sero.sts.service.ScoutService;
 import com.sero.sts.vo.ProDetailsVO;
 
 @RestController
 @RequestMapping("/scout")
 public class ScoutController {
+	
+	@Autowired
+	private ScoutService scoutService;
+
+	static Logger logger = LoggerFactory.getLogger(ScoutDAO.class);
 
 	@RequestMapping(value="/proList", method = RequestMethod.GET) // 선수 목록 이동
 	public ModelAndView proList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		List<ProDetailsVO> proList = ScoutService.listPros();
+		List<ProDetailsVO> proList = scoutService.listPros();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("proList", proList);
+		logger.info("proList Controller viewName = " + viewName);
 		return mav;
 	}
 	
@@ -39,8 +52,7 @@ public class ScoutController {
 	public ModelAndView addPro(@ModelAttribute("pro") ProDetailsVO pro, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		int result = 0;
-		result = ScoutService.addPro(pro);
+		int result = scoutService.addPro(pro);
 		return new ModelAndView("proList");
 	}
 	
@@ -48,7 +60,7 @@ public class ScoutController {
 	public ModelAndView viewPro(@RequestParam("proNum") int proNum, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		ProDetailsVO proInfo = ScoutService.getProInfo(proNum);
+		ProDetailsVO proInfo = scoutService.getProInfo(proNum);
 		ModelAndView mav = new ModelAndView(viewName);
 			
 	    mav.addObject("proInfo", proInfo);  
@@ -102,6 +114,9 @@ public class ScoutController {
 		if (viewName.lastIndexOf("/") != -1) {
 			viewName = viewName.substring(viewName.lastIndexOf("/"), viewName.length());
 		}
+		
+	    viewName = "/scout" + viewName;
+
 		return viewName;
 	}
 

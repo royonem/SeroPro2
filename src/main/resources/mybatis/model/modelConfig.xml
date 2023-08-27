@@ -4,8 +4,7 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias type="com.sero.sts.vo.proDetailsVO" alias="proDetailsVO" />
-        <typeAlias type="com.sero.sts.vo.ProStatsVO" alias="proStatsVO" />
+        <typeAlias type="com.sero.sts.vo.ProDetailsVO" alias="proDetailsVO" />
         <typeAlias type="com.sero.sts.vo.ScoutVO" alias="scoutVO" />
     </typeAliases>
 </configuration>

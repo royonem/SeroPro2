@@ -2,34 +2,37 @@ package com.sero.sts.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-
 import com.sero.sts.vo.ProDetailsVO;
+import org.apache.ibatis.session.SqlSession;
 
-@Repository("ScoutDAO")
-@Aspect
+
+@Repository("scoutDAO")
 public class ScoutDAO {
+	
+	static Logger logger = LoggerFactory.getLogger(ScoutDAO.class);
 
-	@Autowired
-	private static SqlSession sqlSession;
-
-	public static int insertPro(ProDetailsVO pro) throws DataAccessException {
-		int result = sqlSession.insert("mapper.scout.insertBook", pro);
-
+    @Autowired
+	private SqlSession sqlSession;
+	
+	public int insertPro(ProDetailsVO pro) throws DataAccessException {
+        logger.debug("Inserting pro: {}", pro);
+		int result = sqlSession.insert("mapper.scout.insertPro", pro);
 		return result;
 		}
 
 	public List<ProDetailsVO> selectAllProList() throws DataAccessException {
-		List<ProDetailsVO> bookList = null;
-		bookList = sqlSession.selectList("mapper.scout.selectAllProList");
-		return bookList;
+		logger.info("proList DAO 호출");
+		List<ProDetailsVO> proList = null;
+		proList = sqlSession.selectList("mapper.scout.selectAllProList");
+		return proList;
 	}
 
-	public static ProDetailsVO getPro(int proNum) throws DataAccessException {
+	public ProDetailsVO getPro(int proNum) throws DataAccessException {
 		ProDetailsVO proView = null;
 		proView = sqlSession.selectOne("mapper.scout.selectPro", proNum);
 
